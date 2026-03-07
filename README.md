@@ -1,6 +1,6 @@
-# 🌌 VES-369: The Binary Lattice Vortex Protocol
+# 🌌 VES-369: Vortex Protocol
 
-**VES-369** is a high-velocity, header-only C++ library and JavaScript engine designed to optimize data transmission through **Vibrational Frequency Mapping**. Inspired by the 3-6-9 mathematical principles of Nikola Tesla, this protocol bypasses 8-bit ASCII inefficiencies to reclaim "dead space" in data streams.
+**VES-369** is a high-velocity IP package consisting of a JavaScript engine, a header-only C++ library, and a SystemVerilog RTL decoder designed to optimize data transmission through vibrational frequency mapping. Inspired by the 3-6-9 mathematical principles of Nikola Tesla, this protocol bypasses 8-bit ASCII inefficiencies to reclaim "dead space" in data streams across the edge, systems, and silicon.
 
 ---
 
@@ -11,7 +11,18 @@ Unlike traditional dictionary-based compressors (ZIP/GZIP) that require large hi
 2.  **L6 Mid (10 Phase)**: Next 64 characters mapped to **8 bits**.
 3.  **L9 Outlier (11 Phase)**: Remaining characters mapped to **9 bits**.
 
+---
 
+## 📊 Technical Specifications 
+*Verified via included industrial testbenches.*
+
+| Metric | Specification |
+| :--- | :--- |
+| **Algorithm Type** | Deterministic Lattice Mapping |
+| **Lossless Status** | 100% Bit-True Verified |
+| **Header Overhead** | 12 Bytes (8-byte Lattice + 4-byte Bit-Stop) |
+| **Avg. Reduction** | 24% - 37% (Data Dependent) |
+| **Platform Parity** | SystemVerilog ↔ C++ ↔ JavaScript |
 
 ---
 
@@ -29,18 +40,24 @@ Massive reduction for numerical transaction logs. Reclaim 20-25% of database sto
 ---
 
 ## 📂 Repository Contents
+
 * 🚀 **`VES-369_engine.hpp`**: The C++ engine. Header-only, zero dependencies.
-* ⚙️ **`VES-369_testbench.cpp`**: Industrial C++ verification suite.
-* 🌐 **`VES-369_engine.js`**: Web-integration layer for Node.js and Browser parity.
-* ⚙️ **`VES-369_testbench.js`**: Industrial java script verification suite.
+* 🌐 **`VES-369_engine.js`**: Web-integration layer for Node.js and browser parity.
+* 🛰️ **`VES-369_decoder.sv`**: SystemVerilog RTL. Combinational, zero-jitter hardware decoder.
 * 💻 **`VES-369_simulator.html`**: Live visual dashboard for bit-stream analysis.
+* ⚙️ **`VES-369_testbench.*`**: Industrial C++, JS, and SV verification suites.
 
 ---
 
-## 📜 Licensing
-Vortex-369 is dual-licensed to support both open-source and enterprise needs:
+## 📜 Licensing & Usage
+**VES-369** is available under a dual-licensing model to balance community innovation with high-performance industrial needs.
 
-* **Open Source**: Licensed under **GNU AGPLv3**. Any derivative works or network-hosted versions must remain open-source.
-* **Commercial**: For closed-source integration, genomic databases, or aerospace applications, a **Commercial License** is required.
+* **Open Source (AGPL-3.0)**: Ideal for public research, open-source infrastructure, and community-driven projects. This license requires that any derivative works or network-hosted versions of the protocol remain open-source.
+* **Commercial License**: Required for closed-source applications, proprietary hardware synthesis (**ASIC/FPGA**), or integration into private enterprise platforms. This license provides an exemption from the AGPL copyleft requirements and includes options for technical integration support.
 
-📧 *Contact [Your Email] for commercial licensing and integration support.*
+**For commerical licensing inquiries please contact:**
+
+Licensing Agent - J.E. Randolph 📧 [700josh.r@gmail.com](mailto:700josh.r@gmail.com)
+
+---
+*Copyright © 2026 Jonathan Alan Reed. Software provided under AGPL-3.0. Commercial use requires a separate license agreement.*
