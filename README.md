@@ -1,6 +1,6 @@
 # 🌌 VES-369: Vortex Protocol
 
-**VES-369** is a high-velocity IP package consisting of a JavaScript engine, a header-only C++ library, and a SystemVerilog RTL decoder designed to optimize data transmission through vibrational frequency mapping. Inspired by the 3-6-9 mathematical principles of Nikola Tesla, this protocol bypasses 8-bit ASCII inefficiencies to reclaim "dead space" in data streams across the edge, systems, and silicon.
+**VES-369** is a high-velocity IP package consisting of a JavaScript engine, a header-only C++ library, and a SystemVerilog RTL decoder designed to optimize data transmission through vibrational frequency mapping. Inspired by the 3-6-9 mathematical principles of Nikola Tesla, this protocol bypasses 8-bit ASCII inefficiencies to reclaim dead space in data streams across the edge, systems, and silicon.
 
 ---
 
