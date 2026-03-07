@@ -1,0 +1,183 @@
+<!--
+VES-369 VORTEX PROTOCOL: SIMULATOR
+Copyright (c) 2026 Jonathan Alan Reed
+LICENSE: GNU Affero General Public License v3.0 (AGPL-3.0)
+-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        * { box-sizing: border-box; }
+        body, html { 
+            margin: 0; padding: 0; height: 100%; width: 100%; 
+            background: #0a0b10; color: #d1d1d1; 
+            font-family: 'Segoe UI', system-ui, sans-serif; 
+            overflow: hidden; /* Prevents page scroll */
+        }
+        
+        .app-shell {
+            display: flex; flex-direction: column;
+            height: 100vh; padding: 20px; gap: 15px;
+        }
+
+        header {
+            display: flex; justify-content: space-between; align-items: center;
+            border-bottom: 1px solid #1e202e; padding-bottom: 10px; flex-shrink: 0;
+        }
+
+        h2 { margin: 0; font-weight: 300; color: #fff; letter-spacing: 1px; }
+
+        .main-layout {
+            display: flex; flex-direction: column; gap: 15px; flex-grow: 1; min-height: 0;
+        }
+
+        .input-section { flex-shrink: 0; }
+        
+        textarea { 
+            width: 100%; height: 100px; background: #05060a; color: #7ef3d3; 
+            border: 1px solid #1e202e; padding: 12px; border-radius: 4px; 
+            font-family: monospace; font-size: 14px; outline: none; resize: none;
+        }
+
+        button { 
+            width: 100%; padding: 12px; background: #569cd6; color: #fff; 
+            border: none; border-radius: 4px; font-weight: bold; cursor: pointer; 
+            text-transform: uppercase; letter-spacing: 2px; transition: 0.2s;
+        }
+        button:hover { background: #4a86b8; }
+
+        .dashboard {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 15px; flex-grow: 1; min-height: 0;
+        }
+
+        .module {
+            background: #0f111a; border: 1px solid #1e202e; border-radius: 4px;
+            display: flex; flex-direction: column; padding: 15px; min-height: 0;
+        }
+
+        .label { 
+            font-size: 11px; color: #565f89; text-transform: uppercase; 
+            font-weight: bold; margin-bottom: 8px; flex-shrink: 0;
+        }
+
+        .scroll-area { 
+            flex-grow: 1; overflow-y: auto; font-family: monospace; 
+            font-size: 13px; line-height: 1.4; word-break: break-all; /* Fixed Wrapping */
+            padding-right: 5px;
+        }
+
+        /* Custom Scrollbar */
+        .scroll-area::-webkit-scrollbar { width: 6px; }
+        .scroll-area::-webkit-scrollbar-thumb { background: #1e202e; border-radius: 10px; }
+
+        .stats-bar {
+            display: flex; gap: 20px; background: #05060a; padding: 10px 15px;
+            border-radius: 4px; border-left: 3px solid #569cd6; flex-shrink: 0;
+            font-size: 12px;
+        }
+
+        .stat-val { color: #fff; font-weight: bold; margin-left: 5px; }
+
+        /* Vortex Phase Colors */
+        .p-core { color: #7ef3d3; } /* 01 Phase */
+        .p-mid { color: #569cd6; }  /* 10 Phase */
+        .p-out { color: #bb9af7; }  /* 11 Phase */
+    </style>
+</head>
+<body>
+
+<div class="app-shell">
+    <header>
+        <h2>VES-369 VORTEX PROTOCOL SIMULATOR</h2>
+        <div style="font-size: 10px; color: #565f89;">SECURE TRANSMISSION ENGINE // LOSSLESS</div>
+    </header>
+
+    <div class="main-layout">
+        <div class="input-section">
+            <label class="label">Ingest Data Stream</label>
+            <textarea id="input" placeholder="Paste data here...">// DATA STREAM EXAMPLE:
+{
+    "telemetry": "active",
+    "vortex_sync": 369,
+    "status": "Fixed-Rate Compression Engaged"
+}</textarea>
+            <button onclick="tuneAndProcess()">Execute Vortex Compression</button>
+        </div>
+
+        <div class="stats-bar">
+            <div>EFFICIENCY DELTA: <span id="s-savings" class="stat-val">0%</span></div>
+            <div>BIT VIBRATION: <span id="s-vib" class="stat-val">0 b/char</span></div>
+            <div style="margin-left: auto;">LATTICE SYNC: <span class="stat-val" style="color:#7ef3d3;">STABLE</span></div>
+        </div>
+
+        <div class="dashboard">
+            <div class="module">
+                <label class="label">Vortex Bit-Stream</label>
+                <div id="bits" class="scroll-area"></div>
+            </div>
+            <div class="module">
+                <label class="label">Reconstructed Payload</label>
+                <div id="result" class="scroll-area" style="white-space: pre-wrap; color: #fff;"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const ALL_CHARS = " !\"#$%&'()*+,-./0123456789:;<=>?@ABCDEFGHIJKLMNOPQRSTUVWXYZ[\\]^_`abcdefghijklmnopqrstuvwxyz{|}~\n\t\r";
+
+    function tuneAndProcess() {
+        const text = document.getElementById('input').value;
+        if(!text) return;
+
+        let counts = {};
+        for(let char of text) counts[char] = (counts[char] || 0) + 1;
+        let sorted = Object.keys(counts).sort((a,b) => counts[b] - counts[a]);
+
+        let L3 = sorted.slice(0, 8).join(''); 
+        let L6 = ALL_CHARS.split('').filter(c => !L3.includes(c)).slice(0, 64).join(''); 
+        let L9 = ALL_CHARS.split('').filter(c => !L3.includes(c) && !L6.includes(c)).join(''); 
+
+        let totalBits = 0;
+        let encodedStream = [];
+        let bitDisplay = "";
+
+        for(let char of text) {
+            let i3 = L3.indexOf(char);
+            if(i3 !== -1) {
+                let delta = i3.toString(2).padStart(3, '0');
+                totalBits += 5; 
+                encodedStream.push({p:"01", d:delta, l:L3});
+                bitDisplay += `<span class="p-core">${delta}</span>`;
+            } else {
+                let i6 = L6.indexOf(char);
+                if(i6 !== -1) {
+                    let delta = i6.toString(2).padStart(6, '0');
+                    totalBits += 8;
+                    encodedStream.push({p:"10", d:delta, l:L6});
+                    bitDisplay += `<span class="p-mid">${delta}</span>`;
+                } else {
+                    let i9 = L9.indexOf(char);
+                    let finalIdx = i9 === -1 ? 0 : i9;
+                    let delta = finalIdx.toString(2).padStart(7, '0');
+                    totalBits += 9; 
+                    encodedStream.push({p:"11", d:delta, l:L9});
+                    bitDisplay += `<span class="p-out">${delta}</span>`;
+                }
+            }
+        }
+
+        let recovered = encodedStream.map(obj => obj.l[parseInt(obj.d, 2)]).join('');
+        document.getElementById('bits').innerHTML = bitDisplay;
+        document.getElementById('result').innerText = recovered;
+        
+        let original = text.length * 8;
+        let savings = ((1 - (totalBits/original)) * 100).toFixed(1);
+        document.getElementById('s-savings').innerText = savings + "%";
+        document.getElementById('s-vib').innerText = (totalBits/text.length).toFixed(2) + " b/char";
+    }
+</script>
+</body>
+</html>
