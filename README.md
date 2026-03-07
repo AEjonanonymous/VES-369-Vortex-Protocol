@@ -32,10 +32,10 @@ Unlike traditional dictionary-based compressors (ZIP/GZIP) that require large hi
 DNA data is perfectly suited for the Vortex Lattice. By locking **A, C, G, and T** into the L3 Core, VES-369 achieves a **37.5% reduction** in raw sequence data footprints—saving petabytes of storage for research institutions.
 
 ### 🛰️ Aerospace & Satellite Telemetry
-Optimized for the NASA/NVIDIA telemetry standard. Reduce packet sizes for orbital transmission without the CPU overhead of traditional compression.
+Optimized for the NASA/NVIDIA telemetry standard. Reduce packet sizes for orbital transmission without the CPU overhead of traditional compression. Asymmetric architecture enables low-power satellites to stream vibrated data that is reconstructed instantly in ground-station hardware.
 
-### 🏦 Financial Data & Ledgering
-Massive reduction for numerical transaction logs. Reclaim 20-25% of database storage costs by vibrating numeric strings into the 5-bit L3 Core.
+### 🏦 Financial Data, Ledgering & High-Frequency Trading (HFT)
+Massive reduction for numerical transaction logs. Reclaim 20-25% of database storage costs by vibrating numeric strings into the 5-bit L3 Core. In High-Frequency Trading (HFT), the zero-latency hardware decoder enables more market updates per packet and faster trade execution by reducing the compression penalty.
 
 ---
 
