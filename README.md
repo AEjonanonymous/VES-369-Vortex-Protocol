@@ -53,7 +53,7 @@ Massive reduction for numerical transaction logs. Reclaim 20-25% of database sto
 **VES-369** is available under a dual-licensing model to balance community innovation with high-performance industrial needs.
 
 * **Open Source (AGPL-3.0)**: Ideal for public research, open-source infrastructure, and community-driven projects. This license requires that any derivative works or network-hosted versions of the protocol remain open-source.
-* **Commercial License**: Required for closed-source applications, proprietary hardware synthesis (**ASIC/FPGA**), or integration into private enterprise platforms. This license provides an exemption from the AGPL copyleft requirements and includes options for technical integration support.
+* **Commercial License**: Required for closed-source applications, proprietary hardware synthesis (**ASIC/FPGA**), or integration into private enterprise platforms. This license provides an exemption from the AGPL copyleft requirements.
 
 **For commerical licensing inquiries please contact:**
 
